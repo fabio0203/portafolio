@@ -4,9 +4,9 @@ import { SectionReveal } from '../ui/SectionReveal'
 import { CountUp } from '../ui/CountUp'
 import { Tag } from '../ui/Tag'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
-import { siteData } from '../../data/content'
+import { siteData, type CaseStudy } from '../../data/content'
 
-function CaseCard({ cs, index }: { cs: typeof siteData.caseStudies[0]; index: number }) {
+function CaseCard({ cs, index }: { cs: CaseStudy; index: number }) {
   const imageRef = useRef<HTMLDivElement>(null)
   const reduced = useReducedMotion()
   const isEven = index % 2 === 0
@@ -34,13 +34,16 @@ function CaseCard({ cs, index }: { cs: typeof siteData.caseStudies[0]; index: nu
     return () => ctx.revert()
   }, [reduced])
 
+  const metricsCount = cs.metrics?.length ?? 0
+
   return (
     <article
-      className={`grid md:grid-cols-2 gap-12 md:gap-20 items-center py-24 md:py-32 border-t`}
+      className="grid md:grid-cols-2 gap-12 md:gap-20 items-center py-24 md:py-32 border-t"
       style={{ borderColor: 'var(--color-border)' }}
     >
-      {/* Text side — order swaps on even/odd for alternating layout */}
+      {/* ── Text side ── */}
       <div className={`flex flex-col gap-8 ${isEven ? 'md:order-1' : 'md:order-2'}`}>
+
         <SectionReveal delay={0.05}>
           <span
             className="text-xs font-medium tracking-[0.2em] uppercase"
@@ -64,6 +67,7 @@ function CaseCard({ cs, index }: { cs: typeof siteData.caseStudies[0]; index: nu
           </h3>
         </SectionReveal>
 
+        {/* Problem / Solution */}
         <SectionReveal delay={0.2}>
           <div className="flex flex-col gap-4">
             <div>
@@ -71,7 +75,7 @@ function CaseCard({ cs, index }: { cs: typeof siteData.caseStudies[0]; index: nu
                 className="text-xs font-semibold tracking-widest uppercase mb-2"
                 style={{ color: 'var(--color-accent)', fontFamily: 'var(--font-display)' }}
               >
-                El problema
+                El reto
               </p>
               <p className="text-sm leading-relaxed" style={{ color: 'var(--color-muted)' }}>
                 {cs.problem}
@@ -91,24 +95,75 @@ function CaseCard({ cs, index }: { cs: typeof siteData.caseStudies[0]; index: nu
           </div>
         </SectionReveal>
 
-        {/* Metrics */}
-        <SectionReveal delay={0.3}>
-          <div className="grid grid-cols-3 gap-4 py-6 border-t border-b" style={{ borderColor: 'var(--color-border)' }}>
-            {cs.metrics.map((m) => (
-              <div key={m.label} className="flex flex-col gap-1">
-                <span
-                  className="text-3xl md:text-4xl font-bold tabular-nums"
-                  style={{ fontFamily: 'var(--font-display)', color: 'var(--color-text)' }}
-                >
-                  <CountUp end={m.value} suffix={m.suffix} />
-                </span>
-                <span className="text-xs leading-tight" style={{ color: 'var(--color-muted)' }}>
-                  {m.label}
-                </span>
-              </div>
-            ))}
-          </div>
-        </SectionReveal>
+        {/* Features list (caso 2) */}
+        {cs.features && cs.features.length > 0 && (
+          <SectionReveal delay={0.25}>
+            <div className="flex flex-col gap-2">
+              <p
+                className="text-xs font-semibold tracking-widest uppercase mb-1"
+                style={{ color: 'var(--color-accent)', fontFamily: 'var(--font-display)' }}
+              >
+                Lo que lo hace diferente
+              </p>
+              <ul className="flex flex-col gap-2">
+                {cs.features.map((feat, i) => (
+                  <li key={i} className="flex items-start gap-3 text-sm leading-relaxed"
+                    style={{ color: 'var(--color-muted)' }}
+                  >
+                    <span className="mt-0.5 shrink-0" style={{ color: 'var(--color-accent)' }}>→</span>
+                    {feat}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </SectionReveal>
+        )}
+
+        {/* Metrics (caso 1) */}
+        {cs.metrics && cs.metrics.length > 0 && (
+          <SectionReveal delay={0.3}>
+            <div
+              className={`grid gap-4 py-6 border-t border-b ${
+                metricsCount >= 4 ? 'grid-cols-2 sm:grid-cols-4' : 'grid-cols-3'
+              }`}
+              style={{ borderColor: 'var(--color-border)' }}
+            >
+              {cs.metrics.map((m) => (
+                <div key={m.label} className="flex flex-col gap-1">
+                  <span
+                    className="text-3xl md:text-4xl font-bold tabular-nums leading-none"
+                    style={{ fontFamily: 'var(--font-display)', color: 'var(--color-text)' }}
+                  >
+                    <CountUp
+                      end={m.value}
+                      suffix={m.suffix}
+                      prefix={m.prefix}
+                      staticDisplay={m.display}
+                    />
+                  </span>
+                  <span className="text-xs leading-tight" style={{ color: 'var(--color-muted)' }}>
+                    {m.label}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </SectionReveal>
+        )}
+
+        {/* Testimonial */}
+        {cs.testimonial && (
+          <SectionReveal delay={0.33}>
+            <blockquote
+              className="pl-4 py-1 text-sm leading-relaxed italic"
+              style={{
+                borderLeft: '2px solid var(--color-accent)',
+                color: 'var(--color-muted)',
+              }}
+            >
+              {cs.testimonial}
+            </blockquote>
+          </SectionReveal>
+        )}
 
         {/* Tags */}
         <SectionReveal delay={0.35}>
@@ -116,15 +171,31 @@ function CaseCard({ cs, index }: { cs: typeof siteData.caseStudies[0]; index: nu
             {cs.tags.map((t) => <Tag key={t} label={t} />)}
           </div>
         </SectionReveal>
+
+        {/* External link */}
+        {cs.link && (
+          <SectionReveal delay={0.4}>
+            <a
+              href={cs.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-sm font-medium transition-colors duration-200"
+              style={{ color: 'var(--color-accent)', fontFamily: 'var(--font-display)' }}
+              onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = '#fff')}
+              onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = 'var(--color-accent)')}
+            >
+              {cs.linkText ?? 'Ver proyecto'} →
+            </a>
+          </SectionReveal>
+        )}
       </div>
 
-      {/* Image side */}
-      <div className={`relative overflow-hidden rounded-2xl ${isEven ? 'md:order-2' : 'md:order-1'}`}
+      {/* ── Image side ── */}
+      <div
+        className={`relative overflow-hidden rounded-2xl ${isEven ? 'md:order-2' : 'md:order-1'}`}
         style={{ background: 'var(--color-surface-2)', aspectRatio: '4/3' }}
       >
-        {/* Parallax wrapper */}
         <div ref={imageRef} className="absolute inset-[-15%] w-[130%] h-[130%]">
-          {/* TODO: replace src with real screenshot */}
           <img
             src={cs.image}
             alt={cs.title}
@@ -132,12 +203,20 @@ function CaseCard({ cs, index }: { cs: typeof siteData.caseStudies[0]; index: nu
             loading="lazy"
             onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
           />
-          {/* Placeholder */}
+          {/* Elegant placeholder shown when image is missing */}
           <div
-            className="absolute inset-0 flex items-center justify-center text-xs uppercase tracking-widest"
-            style={{ color: 'var(--color-muted)' }}
+            className="absolute inset-0 flex flex-col items-center justify-center gap-3"
+            style={{ background: 'var(--color-surface-2)' }}
           >
-            Imagen / screenshot del proyecto
+            <div
+              className="w-12 h-12 rounded-full flex items-center justify-center"
+              style={{ border: '1px solid var(--color-border)' }}
+            >
+              <span style={{ color: 'var(--color-accent)', fontSize: '1.25rem' }}>◈</span>
+            </div>
+            <span className="text-xs uppercase tracking-widest" style={{ color: 'var(--color-border)' }}>
+              Próximamente
+            </span>
           </div>
         </div>
         {/* Gradient overlay */}
@@ -157,7 +236,6 @@ function CaseCard({ cs, index }: { cs: typeof siteData.caseStudies[0]; index: nu
 export function CaseStudies() {
   return (
     <section id="cases" className="py-16 md:py-24 px-6 md:px-12 max-w-7xl mx-auto">
-      {/* Section header */}
       <div className="mb-4">
         <SectionReveal>
           <span
@@ -185,7 +263,7 @@ export function CaseStudies() {
       </div>
 
       {siteData.caseStudies.map((cs, i) => (
-        <CaseCard key={cs.id} cs={cs} index={i} />
+        <CaseCard key={cs.id} cs={cs as CaseStudy} index={i} />
       ))}
     </section>
   )

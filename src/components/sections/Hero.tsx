@@ -171,7 +171,7 @@ export function Hero() {
               el.style.color = 'var(--color-muted)'
             }}
           >
-            Ver casos de estudio
+            {siteData.heroCta2}
           </a>
         </motion.div>
 

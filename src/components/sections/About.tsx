@@ -12,7 +12,6 @@ export function About() {
             className="relative aspect-[4/5] rounded-2xl overflow-hidden"
             style={{ background: 'var(--color-surface-2)' }}
           >
-            {/* TODO: replace src with your actual photo */}
             <img
               src={siteData.aboutPhoto}
               alt={siteData.name}

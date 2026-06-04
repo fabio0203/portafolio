@@ -4,16 +4,20 @@ import { useReducedMotion } from '../../hooks/useReducedMotion'
 interface Props {
   end: number
   suffix?: string
+  prefix?: string
+  /** When set, renders this string as-is with no count-up animation */
+  staticDisplay?: string
   duration?: number
 }
 
-export function CountUp({ end, suffix = '', duration = 1800 }: Props) {
+export function CountUp({ end, suffix = '', prefix = '', staticDisplay, duration = 1800 }: Props) {
   const [value, setValue] = useState(0)
   const ref = useRef<HTMLSpanElement>(null)
   const reduced = useReducedMotion()
   const started = useRef(false)
 
   useEffect(() => {
+    if (staticDisplay) return
     if (reduced) { setValue(end); return }
 
     const observer = new IntersectionObserver(
@@ -23,7 +27,6 @@ export function CountUp({ end, suffix = '', duration = 1800 }: Props) {
           const start = performance.now()
           const tick = (now: number) => {
             const progress = Math.min((now - start) / duration, 1)
-            // ease out expo
             const eased = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress)
             setValue(Math.round(eased * end))
             if (progress < 1) requestAnimationFrame(tick)
@@ -36,11 +39,15 @@ export function CountUp({ end, suffix = '', duration = 1800 }: Props) {
 
     if (ref.current) observer.observe(ref.current)
     return () => observer.disconnect()
-  }, [end, duration, reduced])
+  }, [end, duration, reduced, staticDisplay])
+
+  if (staticDisplay) {
+    return <span ref={ref}>{staticDisplay}</span>
+  }
 
   return (
     <span ref={ref}>
-      {value}{suffix}
+      {prefix}{value}{suffix}
     </span>
   )
 }

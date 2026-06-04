@@ -116,7 +116,6 @@ export function Contact() {
             className="mt-16 text-sm"
             style={{ color: 'var(--color-border)' }}
           >
-            {/* TODO: replace with your real email */}
             {siteData.email}
           </p>
         </SectionReveal>
