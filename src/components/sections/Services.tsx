@@ -29,7 +29,7 @@ export function Services() {
                 color: 'var(--color-text)',
               }}
             >
-              Lo que puedo hacer por ti
+              Qué hacemos
             </h2>
           </SectionReveal>
           <SectionReveal delay={0.1}>
@@ -37,7 +37,7 @@ export function Services() {
               className="md:self-end text-base leading-relaxed"
               style={{ color: 'var(--color-muted)' }}
             >
-              Trabajo con clientes que quieren resultados concretos: más velocidad, menos fricción, más conversiones. Cada proyecto empieza entendiendo tu negocio, no el código.
+              Trabajamos con clientes que quieren resultados concretos: más velocidad, menos fricción, más conversiones. Cada proyecto empieza entendiendo tu negocio, no el código.
             </p>
           </SectionReveal>
         </div>

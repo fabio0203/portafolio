@@ -50,15 +50,19 @@ export function Contact() {
             className="text-lg leading-relaxed max-w-xl mx-auto mb-14"
             style={{ color: 'var(--color-muted)' }}
           >
-            Cuéntame qué estás construyendo. Trabajo con un número limitado de clientes a la vez para dar mi mejor nivel en cada proyecto.
+            Cuéntanos qué necesita tu negocio. Respondemos rápido y sin compromiso.
           </p>
         </SectionReveal>
 
-        {/* CTA buttons */}
+        {/* CTA buttons — WhatsApp primero, email segundo */}
         <SectionReveal delay={0.3}>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+
+            {/* WhatsApp — botón principal */}
             <a
-              href={`mailto:${siteData.email}`}
+              href={siteData.whatsappHref}
+              target="_blank"
+              rel="noopener noreferrer"
               className="group w-full sm:w-auto inline-flex items-center justify-center gap-3 px-10 py-5 rounded-full font-semibold text-sm transition-all duration-300"
               style={{
                 background: 'var(--color-accent)',
@@ -77,14 +81,13 @@ export function Contact() {
                 el.style.transform = 'translateY(0)'
               }}
             >
-              Escribir por email
-              <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+              {siteData.whatsapp}
+              <span className="transition-transform duration-300 group-hover:translate-x-1">↗</span>
             </a>
 
+            {/* Email — PENDIENTE: actualiza siteData.email con el email definitivo de Almanac */}
             <a
-              href={siteData.whatsappHref}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={`mailto:${siteData.email}`}
               className="group w-full sm:w-auto inline-flex items-center justify-center gap-3 px-10 py-5 rounded-full font-medium text-sm transition-all duration-300"
               style={{
                 border: '1px solid var(--color-border)',
@@ -104,13 +107,13 @@ export function Contact() {
                 el.style.transform = 'translateY(0)'
               }}
             >
-              WhatsApp
-              <span className="transition-transform duration-300 group-hover:translate-x-1">↗</span>
+              Escribir por email
+              <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
             </a>
           </div>
         </SectionReveal>
 
-        {/* Divider + email text */}
+        {/* Email visible — PENDIENTE: actualiza cuando tengas el email definitivo de Almanac */}
         <SectionReveal delay={0.4}>
           <p
             className="mt-16 text-sm"

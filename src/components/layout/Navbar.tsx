@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { siteData } from '../../data/content'
 
 const links = [
-  { label: 'Sobre mí', href: '#about' },
+  { label: 'Nosotros', href: '#about' },
   { label: 'Casos', href: '#cases' },
   { label: 'Proyectos', href: '#projects' },
   { label: 'Servicios', href: '#services' },
@@ -42,13 +42,13 @@ export function Navbar() {
         }}
       >
         <nav className="max-w-7xl mx-auto px-6 md:px-12 h-16 flex items-center justify-between">
-          {/* Logo / Name */}
+          {/* Logo — TODO: reemplaza el texto por el logo SVG de Almanac cuando esté listo */}
           <a
             href="#"
             className="font-semibold text-sm tracking-widest uppercase"
             style={{ fontFamily: 'var(--font-display)', color: 'var(--color-text)' }}
           >
-            {siteData.name.split(' ')[0]}
+            {siteData.name}
           </a>
 
           {/* Desktop links */}

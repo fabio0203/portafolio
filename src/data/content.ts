@@ -2,29 +2,30 @@
 // Cambia aquí para actualizar textos en todo el sitio.
 
 export const siteData = {
-  // ── Personal ──────────────────────────────────────────────────────
-  name: 'Fabio Turiño Rodríguez',
-  title: 'Ingeniero de Software & Consultor Tecnológico',
-  heroHeadline: 'Construyo presencia digital y software que hacen crecer tu negocio.',
+  // ── Marca ─────────────────────────────────────────────────────────
+  name: 'Almanac',
+  title: 'Consultora Tecnológica',
+  heroHeadline: 'Tecnología que hace crecer tu negocio.',
   heroSubtitle:
-    'Ingeniero de software y consultor tecnológico. Desarrollo web, sistemas de gestión a medida, SEO y automatización — con un solo objetivo: que tu negocio venda más y opere mejor.',
+    'En Almanac nos asociamos con negocios para impulsar su crecimiento en cada área digital: desarrollo web, sistemas de gestión a medida, SEO y automatización.',
   heroCta: 'Hablemos',
-  heroCta2: 'Ver mi trabajo',
+  heroCta2: 'Ver nuestro trabajo',
 
-  email: 'turinorodriguezfabio@gmail.com',
+  // PENDIENTE: reemplaza con el email definitivo de Almanac cuando esté listo
+  email: 'contacto@almanac.com',
   whatsapp: '+53 5650 1045',
   whatsappHref: 'https://wa.me/5356501045',
 
-  // ── About ─────────────────────────────────────────────────────────
+  // ── Sobre Almanac ─────────────────────────────────────────────────
   aboutText: [
-    'Soy Fabio Turiño Rodríguez, ingeniero de software especializado en convertir necesidades de negocio en soluciones digitales que funcionan.',
-    'No construyo "páginas bonitas" ni "sistemas por construir". Construyo herramientas con un propósito: una web que posiciona en Google y atrae clientes, un sistema que le da control real a un negocio sobre su inventario y sus finanzas, una automatización que le ahorra horas a un equipo. Mi trabajo se mide en resultados, no en líneas de código.',
-    'Mi especialidad es el desarrollo web y de sistemas de gestión, reforzada con SEO y automatización. Trabajo de cerca con cada cliente, entendiendo su negocio antes de escribir una sola línea, y entregando soluciones rápidas, sólidas y pensadas para crecer con ellos.',
-    'Mi objetivo va más allá de cada proyecto: construir relaciones de largo plazo con negocios que quieren crecer, acompañándolos en su evolución tecnológica. Cada solución que entrego está pensada no solo para resolver el problema de hoy, sino para crecer junto al negocio mañana.',
+    'Almanac es una consultora tecnológica que acompaña a los negocios en su crecimiento digital. No entregamos "páginas bonitas" ni "sistemas por construir": entregamos herramientas con un propósito de negocio: webs que posicionan y atraen clientes, sistemas que dan control real sobre las operaciones, automatizaciones que ahorran horas de trabajo.',
+    'Trabajamos de cerca con cada cliente, entendiendo su negocio antes de escribir una sola línea de código, y entregando soluciones rápidas, sólidas y pensadas para crecer junto a ellos. Nuestro trabajo se mide en resultados.',
+    'Detrás de Almanac está Fabio Turiño Rodríguez, ingeniero de software especializado en desarrollo web y sistemas de gestión, con experiencia comprobada construyendo soluciones digitales para empresas en Panamá y la región. Cada proyecto refleja un compromiso directo con la calidad y el resultado.',
   ],
-  aboutPhoto: '/placeholder-about.jpg', // TODO: reemplaza con tu foto real
+  // TODO: reemplaza con foto o imagen representativa de Almanac
+  aboutPhoto: '/placeholder-about.jpg',
 
-  // ── Services ──────────────────────────────────────────────────────
+  // ── Servicios ─────────────────────────────────────────────────────
   services: [
     {
       icon: '⬡',
@@ -36,7 +37,7 @@ export const siteData = {
       icon: '◈',
       title: 'Sistemas de gestión a medida',
       description:
-        'Software hecho para tu negocio: inventario, ventas, finanzas y reportes, adaptado a cómo trabajas.',
+        'Software hecho para tu negocio: inventario, ventas, finanzas y reportes.',
     },
     {
       icon: '◎',
@@ -48,11 +49,11 @@ export const siteData = {
       icon: '◇',
       title: 'Automatización',
       description:
-        'Elimino tareas repetitivas y conecto tus herramientas para que tu equipo gane tiempo.',
+        'Eliminamos tareas repetitivas y conectamos tus herramientas para que tu equipo gane tiempo.',
     },
   ],
 
-  // ── Case Studies ──────────────────────────────────────────────────
+  // ── Casos de estudio ──────────────────────────────────────────────
   caseStudies: [
     {
       id: 'case-01',
@@ -61,7 +62,7 @@ export const siteData = {
       problem:
         'Pacunato S.A., empresa de importación y exportación en Panamá, no tenía ninguna presencia digital. Era invisible para cualquier cliente que buscara sus servicios en internet.',
       solution:
-        'Diseñé y desarrollé desde cero una presencia digital completa: un sitio web optimizado para conversión, una estrategia SEO integral, automatizaciones de correo y un recurso descargable para captar clientes potenciales.',
+        'Construimos desde cero una presencia digital completa: un sitio web optimizado para conversión, una estrategia SEO integral, automatizaciones de correo y un recurso descargable para captar clientes potenciales.',
       metrics: [
         { prefix: '#', value: 1, suffix: '', label: 'Entre empresas del sector en Google' },
         { value: 5, suffix: '', label: 'Palabras clave en primeras posiciones' },
@@ -80,9 +81,9 @@ export const siteData = {
       tag: 'Software a Medida · Django · Python',
       title: 'Sistema de gestión integral para negocios — que funciona sin internet',
       problem:
-        'Los pequeños y medianos negocios manejan su inventario, ventas y gastos en papel o en hojas de cálculo sueltas, sin visibilidad real de su rentabilidad. Y en entornos con internet inestable, las soluciones en la nube simplemente no sirven.',
+        'Los pequeños y medianos negocios manejan su inventario, ventas y gastos en papel o en hojas de cálculo sueltas, sin visibilidad real de su rentabilidad. En entornos con internet inestable, las soluciones en la nube no sirven.',
       solution:
-        'Desarrollé desde cero un sistema de gestión integral que centraliza toda la operación de un negocio y funciona 100% sin conexión a internet, sobre la propia red local. Varios dispositivos pueden trabajar al mismo tiempo, en tiempo real, sin depender de la nube.',
+        'Desarrollamos desde cero un sistema de gestión integral que centraliza toda la operación de un negocio y funciona 100% sin conexión a internet, sobre la propia red local, con varios dispositivos trabajando en tiempo real.',
       features: [
         'Inventario dual (mostrador y almacén) con costo promedio ponderado — una función que los sistemas básicos no ofrecen',
         'Ventas, gastos categorizados, facturación y cierre de caja',
@@ -97,12 +98,12 @@ export const siteData = {
     },
   ] as const satisfies CaseStudy[],
 
-  // ── Projects ──────────────────────────────────────────────────────
+  // ── Proyectos ─────────────────────────────────────────────────────
   projects: [
     {
       title: 'Casa JAyFE',
       description:
-        'Sitio web y sistema propio de gestión de reservas para un negocio de alquiler turístico. Desarrollo full-stack de la plataforma de administración.',
+        'Sitio web y sistema propio de gestión de reservas para un negocio de alquiler turístico.',
       image: '/placeholder-proj1.jpg', // TODO: reemplaza con captura real
       tags: ['Web', 'Sistema de Reservas'],
       href: '#' as string | null,
@@ -141,7 +142,7 @@ export interface Metric {
   value: number
   suffix: string
   label: string
-  display?: string // override: muestra este texto en lugar del count-up
+  display?: string
 }
 
 export interface CaseStudy {
