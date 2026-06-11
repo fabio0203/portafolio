@@ -79,11 +79,11 @@ export const siteData = {
     {
       id: 'case-02',
       tag: 'Software a Medida · Django · Python',
-      title: 'Sistema de gestión integral para negocios — que funciona sin internet',
+      title: 'ASTROGestión — Sistema de gestión integral para negocios que funciona sin internet',
       problem:
         'Los pequeños y medianos negocios manejan su inventario, ventas y gastos en papel o en hojas de cálculo sueltas, sin visibilidad real de su rentabilidad. En entornos con internet inestable, las soluciones en la nube no sirven.',
       solution:
-        'Desarrollamos desde cero un sistema de gestión integral que centraliza toda la operación de un negocio y funciona 100% sin conexión a internet, sobre la propia red local, con varios dispositivos trabajando en tiempo real.',
+        'Desarrollamos ASTROGestión, un sistema de gestión integral que centraliza toda la operación de un negocio y funciona 100% sin conexión a internet, sobre la propia red local, con varios dispositivos trabajando en tiempo real.',
       features: [
         'Inventario dual (mostrador y almacén) con costo promedio ponderado — una función que los sistemas básicos no ofrecen',
         'Ventas, gastos categorizados, facturación y cierre de caja',
@@ -93,6 +93,8 @@ export const siteData = {
       ],
       differentiator:
         'Operación 100% offline — la mayor limitación del entorno, convertida en ventaja competitiva. Los datos nunca salen del negocio.',
+      link: 'https://fabio0203.github.io/almanac/',
+      linkText: 'Conocer ASTROGestión',
       image: '/placeholder-case2.jpg', // TODO: reemplaza con captura real
       tags: ['Django', 'Python', 'SQLite / PostgreSQL'],
     },
