@@ -21,8 +21,7 @@ export const siteData = {
     'Trabajamos de cerca con cada cliente, entendiendo su negocio antes de escribir una sola línea de código, y entregando soluciones rápidas, sólidas y pensadas para crecer junto a ellos. Nuestro trabajo se mide en resultados.',
     'Detrás de Almanac está Fabio Turiño Rodríguez, ingeniero de software especializado en desarrollo web y sistemas de gestión, con experiencia comprobada construyendo soluciones digitales para empresas en Panamá y la región. Cada proyecto refleja un compromiso directo con la calidad y el resultado.',
   ],
-  // TODO: reemplaza con foto o imagen representativa de Almanac
-  aboutPhoto: '/placeholder-about.jpg',
+  aboutPhoto: '/logo-almanac.png',
 
   // ── Servicios ─────────────────────────────────────────────────────
   services: [
