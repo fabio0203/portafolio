@@ -12,19 +12,9 @@ export function About() {
             className="relative aspect-4/5 rounded-2xl overflow-hidden"
             style={{ background: 'var(--color-surface-2)' }}
           >
-            {/* TODO: reemplaza con foto del fundador o imagen representativa de Almanac */}
-            <img
-              src={siteData.aboutPhoto}
-              alt={siteData.name}
-              className="w-full h-full object-cover"
-              loading="lazy"
-              onError={(e) => {
-                (e.target as HTMLImageElement).style.display = 'none'
-              }}
-            />
-            {/* Placeholder elegante mientras no hay imagen */}
+            {/* Placeholder detrás — visible solo si la imagen no carga */}
             <div
-              className="absolute inset-0 flex flex-col items-center justify-center gap-4"
+              className="absolute inset-0 z-0 flex flex-col items-center justify-center gap-4"
               style={{ background: 'var(--color-surface-2)' }}
             >
               <div
@@ -37,6 +27,16 @@ export function About() {
                 Almanac
               </span>
             </div>
+            {/* Imagen encima del placeholder */}
+            <img
+              src={siteData.aboutPhoto}
+              alt={siteData.name}
+              className="relative z-10 w-full h-full object-cover"
+              loading="lazy"
+              onError={(e) => {
+                (e.target as HTMLImageElement).style.display = 'none'
+              }}
+            />
             {/* Accent corner decoration */}
             <div
               className="absolute bottom-0 left-0 w-24 h-24 rounded-tr-2xl"
