@@ -11,8 +11,7 @@ export const siteData = {
   heroCta: 'Hablemos',
   heroCta2: 'Ver nuestro trabajo',
 
-  // PENDIENTE: reemplaza con el email definitivo de Almanac cuando esté listo
-  email: 'contacto@almanac.com',
+  email: 'almanac.dev.tech@gmail.com',
   whatsapp: '+53 5650 1045',
   whatsappHref: 'https://wa.me/5356501045',
 
