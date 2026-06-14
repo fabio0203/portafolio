@@ -4,7 +4,7 @@ import { useContactModal } from '../../context/ContactModalContext'
 import { siteData } from '../../data/content'
 
 const WA_HREF = `https://wa.me/5356501045?text=${encodeURIComponent('Hola vengo desde la web de Almanac para conocer mas sobre sus servicios')}`
-const EMAIL_HREF = `mailto:${siteData.email}?subject=${encodeURIComponent('Web de Almanac')}`
+const EMAIL_HREF = `https://mail.google.com/mail/?view=cm&fs=1&to=${siteData.email}&su=${encodeURIComponent('Web de Almanac')}`
 
 export function ContactModal() {
   const { open, closeModal } = useContactModal()
@@ -142,6 +142,8 @@ export function ContactModal() {
               {/* Email */}
               <a
                 href={EMAIL_HREF}
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() => setTimeout(closeModal, 200)}
                 className="flex items-center gap-4 p-4 rounded-xl transition-all duration-200"
                 style={{
