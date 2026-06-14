@@ -1,7 +1,10 @@
 import { siteData } from '../../data/content'
+import { useContactModal } from '../../context/ContactModalContext'
 
 export function Footer() {
   const year = new Date().getFullYear()
+  const { openModal } = useContactModal()
+
   return (
     <footer
       className="py-10 px-6 md:px-12 border-t flex flex-col md:flex-row items-center justify-between gap-4"
@@ -14,26 +17,24 @@ export function Footer() {
         {siteData.name} © {year}
       </span>
       <div className="flex items-center gap-6">
-        <a
-          href={`mailto:${siteData.email}`}
-          className="text-xs transition-colors duration-200"
+        <button
+          onClick={openModal}
+          className="text-xs transition-colors duration-200 bg-transparent border-none p-0 cursor-pointer"
           style={{ color: 'var(--color-muted)' }}
-          onMouseEnter={(e) => ((e.target as HTMLElement).style.color = 'var(--color-text)')}
-          onMouseLeave={(e) => ((e.target as HTMLElement).style.color = 'var(--color-muted)')}
+          onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--color-text)')}
+          onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--color-muted)')}
         >
           {siteData.email}
-        </a>
-        <a
-          href={siteData.whatsappHref}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-xs transition-colors duration-200"
+        </button>
+        <button
+          onClick={openModal}
+          className="text-xs transition-colors duration-200 bg-transparent border-none p-0 cursor-pointer"
           style={{ color: 'var(--color-muted)' }}
-          onMouseEnter={(e) => ((e.target as HTMLElement).style.color = 'var(--color-text)')}
-          onMouseLeave={(e) => ((e.target as HTMLElement).style.color = 'var(--color-muted)')}
+          onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--color-text)')}
+          onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--color-muted)')}
         >
           WhatsApp
-        </a>
+        </button>
       </div>
     </footer>
   )

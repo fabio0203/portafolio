@@ -142,7 +142,7 @@ export function ContactModal() {
               {/* Email */}
               <a
                 href={EMAIL_HREF}
-                onClick={closeModal}
+                onClick={() => setTimeout(closeModal, 200)}
                 className="flex items-center gap-4 p-4 rounded-xl transition-all duration-200"
                 style={{
                   background: 'var(--color-surface-2)',
