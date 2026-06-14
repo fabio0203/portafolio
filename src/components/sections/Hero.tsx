@@ -3,10 +3,12 @@ import { motion } from 'framer-motion'
 import { gsap } from '../../lib/gsap'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
 import { siteData } from '../../data/content'
+import { useContactModal } from '../../context/ContactModalContext'
 
 export function Hero() {
   const headlineRef = useRef<HTMLHeadingElement>(null)
   const reduced = useReducedMotion()
+  const { openModal } = useContactModal()
 
   useEffect(() => {
     if (!headlineRef.current) return
@@ -120,18 +122,16 @@ export function Hero() {
           {...fadeIn(1.35)}
           className="flex flex-wrap items-center gap-4"
         >
-          <a
-            href="#contact"
-            onClick={(e) => {
-              e.preventDefault()
-              document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })
-            }}
+          <button
+            onClick={openModal}
             className="group inline-flex items-center gap-3 px-8 py-4 rounded-full font-semibold text-sm transition-all duration-300"
             style={{
               background: 'var(--color-accent)',
               color: '#000',
               fontFamily: 'var(--font-display)',
               letterSpacing: '0.05em',
+              border: 'none',
+              cursor: 'pointer',
             }}
             onMouseEnter={(e) => {
               const el = e.currentTarget as HTMLElement
@@ -146,7 +146,7 @@ export function Hero() {
           >
             {siteData.heroCta}
             <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
-          </a>
+          </button>
 
           <a
             href="#cases"

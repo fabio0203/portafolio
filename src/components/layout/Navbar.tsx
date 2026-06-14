@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { siteData } from '../../data/content'
+import { useContactModal } from '../../context/ContactModalContext'
 
 const links = [
   { label: 'Nosotros', href: '#about' },
@@ -14,6 +15,7 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
   const prevY = useRef(0)
+  const { openModal } = useContactModal()
 
   useEffect(() => {
     const handler = () => {
@@ -70,20 +72,22 @@ export function Navbar() {
           </ul>
 
           {/* Desktop CTA */}
-          <a
-            href={`mailto:${siteData.email}`}
+          <button
+            onClick={openModal}
             className="hidden md:inline-flex items-center gap-2 px-5 py-2 text-xs font-semibold rounded-full transition-all duration-300"
             style={{
               background: 'var(--color-accent)',
               color: '#000',
               fontFamily: 'var(--font-display)',
               letterSpacing: '0.05em',
+              border: 'none',
+              cursor: 'pointer',
             }}
-            onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.background = 'var(--color-accent-dim)')}
-            onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.background = 'var(--color-accent)')}
+            onMouseEnter={(e) => (e.currentTarget.style.background = 'var(--color-accent-dim)')}
+            onMouseLeave={(e) => (e.currentTarget.style.background = 'var(--color-accent)')}
           >
             Hablemos
-          </a>
+          </button>
 
           {/* Hamburger */}
           <button
@@ -141,16 +145,22 @@ export function Navbar() {
                 {l.label}
               </motion.a>
             ))}
-            <motion.a
-              href={`mailto:${siteData.email}`}
+            <motion.button
+              onClick={() => { setOpen(false); openModal() }}
               className="mt-4 px-8 py-3 text-sm font-semibold rounded-full"
-              style={{ background: 'var(--color-accent)', color: '#000', fontFamily: 'var(--font-display)' }}
+              style={{
+                background: 'var(--color-accent)',
+                color: '#000',
+                fontFamily: 'var(--font-display)',
+                border: 'none',
+                cursor: 'pointer',
+              }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
             >
               Hablemos
-            </motion.a>
+            </motion.button>
           </motion.div>
         )}
       </AnimatePresence>

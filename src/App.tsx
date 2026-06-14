@@ -1,5 +1,7 @@
 import { useReducedMotion } from './hooks/useReducedMotion'
 import { useLenis } from './hooks/useLenis'
+import { ContactModalProvider } from './context/ContactModalContext'
+import { ContactModal } from './components/ui/ContactModal'
 import { CustomCursor } from './components/ui/CustomCursor'
 import { Navbar } from './components/layout/Navbar'
 import { Footer } from './components/layout/Footer'
@@ -15,7 +17,7 @@ export default function App() {
   useLenis(reduced)
 
   return (
-    <>
+    <ContactModalProvider>
       <CustomCursor />
       <Navbar />
       <main>
@@ -27,6 +29,7 @@ export default function App() {
         <Contact />
       </main>
       <Footer />
-    </>
+      <ContactModal />
+    </ContactModalProvider>
   )
 }

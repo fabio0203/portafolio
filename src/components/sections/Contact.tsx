@@ -1,7 +1,10 @@
 import { SectionReveal } from '../ui/SectionReveal'
 import { siteData } from '../../data/content'
+import { useContactModal } from '../../context/ContactModalContext'
 
 export function Contact() {
+  const { openModal } = useContactModal()
+
   return (
     <section
       id="contact"
@@ -54,66 +57,35 @@ export function Contact() {
           </p>
         </SectionReveal>
 
-        {/* CTA buttons — WhatsApp primero, email segundo */}
+        {/* CTA principal */}
         <SectionReveal delay={0.3}>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-
-            {/* WhatsApp — botón principal */}
-            <a
-              href={siteData.whatsappHref}
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              onClick={openModal}
               className="group w-full sm:w-auto inline-flex items-center justify-center gap-3 px-10 py-5 rounded-full font-semibold text-sm transition-all duration-300"
               style={{
                 background: 'var(--color-accent)',
                 color: '#000',
                 fontFamily: 'var(--font-display)',
                 letterSpacing: '0.05em',
+                border: 'none',
+                cursor: 'pointer',
               }}
               onMouseEnter={(e) => {
-                const el = e.currentTarget as HTMLElement
-                el.style.background = '#fff'
-                el.style.transform = 'translateY(-2px)'
+                e.currentTarget.style.background = '#fff'
+                e.currentTarget.style.transform = 'translateY(-2px)'
               }}
               onMouseLeave={(e) => {
-                const el = e.currentTarget as HTMLElement
-                el.style.background = 'var(--color-accent)'
-                el.style.transform = 'translateY(0)'
+                e.currentTarget.style.background = 'var(--color-accent)'
+                e.currentTarget.style.transform = 'translateY(0)'
               }}
             >
-              {siteData.whatsapp}
+              Hablemos
               <span className="transition-transform duration-300 group-hover:translate-x-1">↗</span>
-            </a>
-
-            {/* Email — PENDIENTE: actualiza siteData.email con el email definitivo de Almanac */}
-            <a
-              href={`mailto:${siteData.email}`}
-              className="group w-full sm:w-auto inline-flex items-center justify-center gap-3 px-10 py-5 rounded-full font-medium text-sm transition-all duration-300"
-              style={{
-                border: '1px solid var(--color-border)',
-                color: 'var(--color-muted)',
-                fontFamily: 'var(--font-body)',
-              }}
-              onMouseEnter={(e) => {
-                const el = e.currentTarget as HTMLElement
-                el.style.borderColor = 'var(--color-text)'
-                el.style.color = 'var(--color-text)'
-                el.style.transform = 'translateY(-2px)'
-              }}
-              onMouseLeave={(e) => {
-                const el = e.currentTarget as HTMLElement
-                el.style.borderColor = 'var(--color-border)'
-                el.style.color = 'var(--color-muted)'
-                el.style.transform = 'translateY(0)'
-              }}
-            >
-              Escribir por email
-              <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-            </a>
+            </button>
           </div>
         </SectionReveal>
 
-        {/* Email visible — PENDIENTE: actualiza cuando tengas el email definitivo de Almanac */}
         <SectionReveal delay={0.4}>
           <p
             className="mt-16 text-sm"
