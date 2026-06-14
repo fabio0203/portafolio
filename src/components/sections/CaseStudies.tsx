@@ -5,6 +5,7 @@ import { CountUp } from '../ui/CountUp'
 import { Tag } from '../ui/Tag'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
 import { siteData, type CaseStudy } from '../../data/content'
+import { assetUrl } from '../../lib/assetUrl'
 
 function CaseCard({ cs, index }: { cs: CaseStudy; index: number }) {
   const imageRef = useRef<HTMLDivElement>(null)
@@ -213,7 +214,7 @@ function CaseCard({ cs, index }: { cs: CaseStudy; index: number }) {
           </div>
           {/* Imagen encima del placeholder */}
           <img
-            src={cs.image}
+            src={assetUrl(cs.image)}
             alt={cs.title}
             className="relative z-10 w-full h-full object-cover"
             loading="lazy"

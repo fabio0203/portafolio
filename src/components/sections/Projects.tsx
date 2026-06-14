@@ -3,6 +3,7 @@ import { SectionReveal } from '../ui/SectionReveal'
 import { Tag } from '../ui/Tag'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
 import { siteData, type Project } from '../../data/content'
+import { assetUrl } from '../../lib/assetUrl'
 
 function ProjectCard({ project, index }: { project: Project; index: number }) {
   const reduced = useReducedMotion()
@@ -32,7 +33,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         </div>
         {/* Imagen encima */}
         <img
-          src={project.image}
+          src={assetUrl(project.image)}
           alt={project.title}
           className={`relative z-10 w-full h-full object-cover transition-transform duration-500 ${isClickable ? 'group-hover:scale-105' : ''}`}
           loading="lazy"

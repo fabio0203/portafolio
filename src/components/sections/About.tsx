@@ -1,5 +1,6 @@
 import { SectionReveal } from '../ui/SectionReveal'
 import { siteData } from '../../data/content'
+import { assetUrl } from '../../lib/assetUrl'
 
 export function About() {
   return (
@@ -29,7 +30,7 @@ export function About() {
             </div>
             {/* Imagen encima del placeholder */}
             <img
-              src={siteData.aboutPhoto}
+              src={assetUrl(siteData.aboutPhoto)}
               alt={siteData.name}
               className="relative z-10 w-full h-full object-cover"
               loading="lazy"
