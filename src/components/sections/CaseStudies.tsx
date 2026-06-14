@@ -196,16 +196,9 @@ function CaseCard({ cs, index }: { cs: CaseStudy; index: number }) {
         style={{ background: 'var(--color-surface-2)', aspectRatio: '4/3' }}
       >
         <div ref={imageRef} className="absolute inset-[-15%] w-[130%] h-[130%]">
-          <img
-            src={cs.image}
-            alt={cs.title}
-            className="w-full h-full object-cover"
-            loading="lazy"
-            onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
-          />
-          {/* Elegant placeholder shown when image is missing */}
+          {/* Placeholder detrás */}
           <div
-            className="absolute inset-0 flex flex-col items-center justify-center gap-3"
+            className="absolute inset-0 z-0 flex flex-col items-center justify-center gap-3"
             style={{ background: 'var(--color-surface-2)' }}
           >
             <div
@@ -218,6 +211,14 @@ function CaseCard({ cs, index }: { cs: CaseStudy; index: number }) {
               Próximamente
             </span>
           </div>
+          {/* Imagen encima del placeholder */}
+          <img
+            src={cs.image}
+            alt={cs.title}
+            className="relative z-10 w-full h-full object-cover"
+            loading="lazy"
+            onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
+          />
         </div>
         {/* Gradient overlay */}
         <div

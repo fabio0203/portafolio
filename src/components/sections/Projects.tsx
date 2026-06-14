@@ -15,16 +15,9 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         className="relative overflow-hidden"
         style={{ aspectRatio: '16/9', background: 'var(--color-surface-2)' }}
       >
-        <img
-          src={project.image}
-          alt={project.title}
-          className={`w-full h-full object-cover transition-transform duration-500 ${isClickable ? 'group-hover:scale-105' : ''}`}
-          loading="lazy"
-          onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
-        />
-        {/* Placeholder state */}
+        {/* Placeholder detrás */}
         <div
-          className="absolute inset-0 flex flex-col items-center justify-center gap-2"
+          className="absolute inset-0 z-0 flex flex-col items-center justify-center gap-2"
           style={{ background: 'var(--color-surface-2)' }}
         >
           <div
@@ -37,6 +30,14 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
             Próximamente
           </span>
         </div>
+        {/* Imagen encima */}
+        <img
+          src={project.image}
+          alt={project.title}
+          className={`relative z-10 w-full h-full object-cover transition-transform duration-500 ${isClickable ? 'group-hover:scale-105' : ''}`}
+          loading="lazy"
+          onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
+        />
 
         {/* Hover arrow — only for clickable cards */}
         {isClickable && (

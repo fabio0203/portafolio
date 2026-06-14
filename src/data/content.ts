@@ -71,7 +71,7 @@ export const siteData = {
         '"La página está excelente, de verdad que sí. Gracias por tu talento, eres todo un profesional. Está todo muy bien, estamos de acuerdo todos."',
       link: 'https://pacunato.com',
       linkText: 'Ver sitio',
-      image: '/placeholder-case1.jpg', // TODO: reemplaza con captura real
+      image: '/pacunato.png',
       tags: ['HTML/CSS', 'SEO', 'Email Marketing'],
     },
     {
@@ -104,7 +104,7 @@ export const siteData = {
       title: 'Casa JAyFE',
       description:
         'Sitio web y sistema propio de gestión de reservas para un negocio de alquiler turístico.',
-      image: '/placeholder-proj1.jpg', // TODO: reemplaza con captura real
+      image: '/casa-jayfe.png',
       tags: ['Web', 'Sistema de Reservas'],
       href: '#' as string | null,
     },
@@ -112,7 +112,7 @@ export const siteData = {
       title: 'CubaNexus',
       description:
         'Plataforma de inversión con pasarelas de pago para una firma de consultoría financiera.',
-      image: '/placeholder-proj2.jpg',
+      image: '/cubanexus.png',
       tags: ['Plataforma SaaS'],
       href: null as string | null,
       badge: 'En desarrollo',
@@ -121,7 +121,7 @@ export const siteData = {
       title: 'Menú Digital',
       description:
         'Menú digital interactivo para restaurante, accesible desde el móvil del comensal.',
-      image: '/placeholder-proj3.jpg',
+      image: '/poseidon.png',
       tags: ['Web', 'Restaurante'],
       href: '#' as string | null,
     },
@@ -129,7 +129,7 @@ export const siteData = {
       title: 'Aldaba',
       description:
         'Sitio web con sistema de gestión de contenidos para una empresa local.',
-      image: '/placeholder-proj4.jpg',
+      image: '/aldaba.png',
       tags: ['Web', 'Gestión'],
       href: '#' as string | null,
     },
